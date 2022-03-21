@@ -1,0 +1,8 @@
+---
+- name: Bind Server Installation
+  hosts: bindlab
+  become: true
+  gather_facts: false
+
+  roles:
+    - { role: install-bind }
