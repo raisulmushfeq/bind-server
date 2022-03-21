@@ -1,5 +1,27 @@
 ---
   - name: Update the server
-    yum:
+    dnf:
       name: '*'
       state: latest
+
+  - name: Install bind and relavent tools
+    dnf:
+      name:
+        - bind
+        - bind-utils
+
+  - name: Copy Configuration file
+    template:
+      src: named.conf.j2
+      dest: /etc/named.conf
+      owner: root
+      group: named
+      mode: 0660
+    notify: restart named
+
+  - name: Open firewall port
+    firewalld:
+      service: dns
+      permanent: true
+      state: enabled
+      immediate: yes

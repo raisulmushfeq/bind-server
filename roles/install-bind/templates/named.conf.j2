@@ -1,0 +1,20 @@
+options {
+	directory "/var/named";
+	dnssec-validation auto;
+	listen-on { any; };
+	allow-query     { any; };
+	recursion yes;
+	forwarders {
+                8.8.8.8;
+                8.8.4.4;
+        };
+	forward only;
+	listen-on-v6 { any; };
+	querylog yes;
+};
+logging {
+        channel querylog {
+                file "data/named.run";
+                severity dynamic;
+        };
+};
