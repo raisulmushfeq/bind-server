@@ -4,3 +4,4 @@
   service:
     name: named
     state: restarted
+    enabled: yes

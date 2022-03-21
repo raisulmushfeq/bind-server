@@ -1,5 +1,6 @@
 options {
-	directory "/var/named";
+	directory   "/var/named";
+    dump-file   "/var/named/data/cache_dump.db";
 	dnssec-validation auto;
 	listen-on { any; };
 	allow-query     { any; };
